@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Email Validation</title>
+</head>
+<body>
+    <h1>Email Validation</h1>
+    <form action="/validate_email" method="POST">
+        <label for="email">Enter Email:</label>
+        <input type="text" name="email" placeholder="Enter your email" required>
+        <button type="submit">Validate Email</button>
+    </form>
+    
+    {% if email is not none %}
+    <div class="email-result-container">
+        {% if is_valid %}
+            <p>The email "{{ email }}" is valid.</p>
+        {% else %}
+            <p>The email "{{ email }}" is invalid.</p>
+        {% endif %}
+    {% endif %}
+    </div>
+</body>
+</html>
